@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kingsguard Technology & Security Services | CCTV · Solar · Access Control · Abuja</title>
+  <meta name="description" content="Professional CCTV installation, solar energy systems, inverter backup, electric fencing, and smart access control in Abuja. 2000+ successful installs. Call 09039719412." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+  /* ============================================================
+     KINGSGUARD — DESIGN TOKENS
+  ============================================================ */
+  :root {
+    --bg:          #080d1a;
+    --bg-2:        #0d1526;
+    --bg-card:     #111c33;
+    --bg-card-2:   #0f1a2e;
+    --cyan:        #00d4ff;
+    --cyan-dim:    rgba(0,212,255,0.12);
+    --cyan-glow:   rgba(0,212,255,0.25);
+    --amber:       #f59e0b;
+    --amber-dim:   rgba(245,158,11,0.12);
+    --green:       #22c55e;
+    --white:       #ffffff;
+    --text:        #e2e8f0;
+    --text-muted:  #64748b;
+    --text-dim:    #94a3b8;
+    --border:      rgba(255,255,255,0.07);
+    --border-cyan: rgba(0,212,255,0.25);
+    --radius-sm:   8px;
+    --radius-md:   16px;
+    --radius-lg:   24px;
+    --radius-xl:   32px;
+    --font-display:'Syne', sans-serif;
+    --font-body:   'Inter', sans-serif;
+    --transition:  0.28s ease;
+    --nav-h:       72px;
+  }
+
+  /* ============================================================
+     RESET
+  ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+  /* ============================================================
+     SCROLLBAR
+  ============================================================ */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--cyan-glow); border-radius: 3px; }
+
+  /* ============================================================
+     UTILITY
+  ============================================================ */
+  .container { width: 100%; max-width: 1200px; margin-inline: auto; padding-inline: 1.5rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+  /* ============================================================
+     REVEAL ANIMATIONS
+  ============================================================ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-left  { opacity: 0; transform: translateX(-32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal-right { opacity: 0; transform: translateX(32px);  transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: translateX(0); }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+  .delay-4 { transition-delay: 0.4s; }
+  .delay-5 { transition-delay: 0.5s; }
+  .delay-6 { transition-delay: 0.6s; }
+  .delay-7 { transition-delay: 0.7s; }
+  .delay-8 { transition-delay: 0.8s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-left, .reveal-right { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* ============================================================
+     NAVBAR
+  ============================================================ */
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    z-index: 1000;
+    background: rgba(8,13,26,0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: background var(--transition), box-shadow var(--transition);
+  }
+  .navbar.scrolled {
+    background: rgba(8,13,26,0.97);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+  }
+  .navbar__inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+  .navbar__logo-icon {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--cyan), #0099bb);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .navbar__logo-icon svg {
+    width: 20px; height: 20px;
+    fill: none; stroke: #080d1a; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;
+  }
+  .navbar__logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+  .navbar__logo-name {
+    font-family: var(--font-display);
+    font-size: 1rem; font-weight: 800;
+    color: var(--white); letter-spacing: -0.02em;
+  }
+  .navbar__logo-sub {
+    font-size: 0.62rem; font-weight: 500;
+    color: var(--cyan); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .navbar__nav {
+    display: flex; align-items: center; gap: 0.25rem;
+  }
+  .navbar__link {
+    padding: 0.4rem 0.85rem;
+    border-radius: 50px;
+    font-size: 0.875rem; font-weight: 500;
+    color: var(--text-dim);
+    transition: color var(--transition), background var(--transition);
+  }
+  .navbar__link:hover, .navbar__link.active {
+    color: var(--cyan);
+    background: var(--cyan-dim);
+  }
+  .navbar__cta {
+    padding: 0.55rem 1.25rem;
+    background: var(--cyan);
+    color: #080d1a;
+    border-radius: 50px;
+    font-size: 0.875rem; font-weight: 700;
+    transition: transform var(--transition), box-shadow var(--transition);
+    flex-shrink: 0;
+  }
+  .navbar__cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,212,255,0.35); }
+
+  /* Hamburger */
+  .navbar__hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    padding: 0.5rem; cursor: pointer;
+  }
+  .navbar__hamburger span {
+    display: block; width: 22px; height: 2px;
+    background: var(--white); border-radius: 2px;
+    transition: transform var(--transition), opacity var(--transition);
+  }
+  .navbar__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .navbar__hamburger.open span:nth-child(2) { opacity: 0; }
+  .navbar__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile drawer */
+  .navbar__mobile {
+    display: none;
+    position: fixed;
+    top: var(--nav-h); left: 0; right: 0;
+    background: rgba(8,13,26,0.98);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    padding: 1rem 1.5rem 1.5rem;
+    gap: 0.25rem;
+    z-index: 999;
+  }
+  .navbar__mobile.open { display: flex; }
+  .navbar__mobile .navbar__link { padding: 0.75rem 1rem; border-radius: var(--radius-sm); }
+  .navbar__mobile .navbar__cta { margin-top: 0.5rem; text-align: center; padding: 0.85rem; }
+
+  /* ============================================================
+     SECTION NAV (like services page)
+  ============================================================ */
+  .section-nav {
+    background: rgba(8,13,26,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: var(--nav-h);
+    z-index: 90;
+  }
+  .section-nav__inner {
+    display: flex; gap: 0.25rem;
+    overflow-x: auto; padding: 0.6rem 0;
+    scrollbar-width: none;
+  }
+  .section-nav__inner::-webkit-scrollbar { display: none; }
+  .snav-pill {
+    display: flex; align-items: center; gap: 0.4rem;
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+    transition: all var(--transition);
+    cursor: pointer;
+  }
+  .snav-pill:hover { color: var(--cyan); background: var(--cyan-dim); }
+  .snav-pill.active { background: var(--cyan); color: #080d1a; }
+  .snav-pill__dot {
+    width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0;
+  }
+
+  /* ============================================================
+     HERO
+  ============================================================ */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 1.5rem 80px;
+    background: var(--bg);
+  }
+
+  /* Animated grid bg */
+  .hero__grid {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.035) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Radial glow */
+  .hero__glow {
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,212,255,0.08) 0%, transparent 65%);
+    top: 50%; left: 50%; transform: translate(-50%, -60%);
+    pointer-events: none;
+    animation: glowPulse 6s ease-in-out infinite;
+  }
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.8; transform: translate(-50%,-60%) scale(1); }
+    50%       { opacity: 1;   transform: translate(-50%,-60%) scale(1.08); }
+  }
+
+  /* Scan line sweep */
+  .hero__scan {
+    position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  }
+  .hero__scan::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    opacity: 0.25;
+    animation: scanSweep 5s linear infinite;
+  }
+  @keyframes scanSweep {
+    0%   { top: -2px; }
+    100% { top: 100%; }
+  }
+
+  .hero__content { position: relative; z-index: 2; max-width: 860px; }
+
+  .hero__eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.35rem 1rem;
+    background: var(--cyan-dim);
+    border: 1px solid var(--border-cyan);
+    border-radius: 50px;
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 1.5rem;
+  }
+  .hero__eyebrow-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--cyan);
+    animation: blink 1.5s ease-in-out infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .hero__title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 1.25rem;
+  }
+  .hero__title em {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--cyan), #00aadd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero__title .amber {
+    font-style: normal;
+    background: linear-gradient(90deg, var(--amber), #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero__subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-dim);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.75;
+  }
+
+  .hero__actions {
+    display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+  }
+
+  /* Pill tags */
+  .hero__tags {
+    display: flex; justify-content: center; gap: 0.6rem; flex-wrap: wrap;
+  }
+  .hero__tag {
+    padding: 0.3rem 0.85rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.78rem; color: var(--text-muted);
+  }
+
+  /* ============================================================
+     BUTTONS
+  ============================================================ */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.85rem 1.75rem;
+    border-radius: 50px;
+    font-family: var(--font-display);
+    font-size: 0.95rem; font-weight: 700;
+    line-height: 1;
+    transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    white-space: nowrap;
+  }
+  .btn:hover  { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+  .btn--cyan  { background: var(--cyan); color: #080d1a; box-shadow: 0 4px 18px rgba(0,212,255,0.3); }
+  .btn--cyan:hover { box-shadow: 0 8px 28px rgba(0,212,255,0.45); }
+  .btn--outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); }
+  .btn--outline:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
+  .btn--amber { background: var(--amber); color: #080d1a; box-shadow: 0 4px 18px rgba(245,158,11,0.3); }
+  .btn--amber:hover { box-shadow: 0 8px 28px rgba(245,158,11,0.45); }
+  .btn--ghost { background: var(--cyan-dim); color: var(--cyan); border: 1px solid var(--border-cyan); }
+  .btn--ghost:hover { background: rgba(0,212,255,0.2); }
+  .btn--sm { padding: 0.55rem 1.25rem; font-size: 0.8rem; }
+
+  /* ============================================================
+     TRUST STRIP
+  ============================================================ */
+  .trust-strip {
+    background: var(--bg-2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.25rem 0;
+  }
+  .trust-strip__inner {
+    display: flex; justify-content: center; align-items: center;
+    gap: 0.75rem; flex-wrap: wrap;
+  }
+  .trust-badge {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 1.1rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    font-size: 0.82rem; font-weight: 600; color: var(--text-dim);
+  }
+  .trust-badge svg { width: 15px; height: 15px; fill: none; stroke: var(--cyan); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+  /* ============================================================
+     COUNTERS
+  ============================================================ */
+  .counters-section {
+    background: var(--bg-2);
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .counters-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .counter-block {
+    background: var(--bg-2);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+  }
+  .counter-block__num {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    color: var(--cyan);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .counter-block__num.amber-num { color: var(--amber); }
+  .counter-block__label {
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  /* ============================================================
+     SECTION HEADERS
+  ============================================================ */
+  .section-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 0.75rem;
+  }
+  .section-eyebrow svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .section-eyebrow.amber { color: var(--amber); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 800; line-height: 1.15;
+    color: var(--white); letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1rem; color: var(--text-dim); line-height: 1.75; max-width: 560px;
+  }
+  .section-header { margin-bottom: 3.5rem; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-sub { margin-inline: auto; }
+
+  /* ============================================================
+     SERVICES
+  ============================================================ */
+  .services-section {
+    padding: 5rem 0;
+    background: var(--bg);
+    scroll-margin-top: calc(var(--nav-h) + 56px);
+  }
+
+  /* Service nav */
+  .service-dept-nav {
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 0.5rem;
+    display: flex; gap: 0.25rem; flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .sdept-btn {
+    flex: 1; min-width: 140px;
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--text-muted);
+    transition: all var(--transition); cursor: pointer;
+    white-space: nowrap;
+  }
+  .sdept-btn:hover { color: var(--cyan); background: var(--cyan-dim); }
+  .sdept-btn.active { background: var(--cyan); color: #080d1a; }
+  .sdept-btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+  /* Service dept block */
+  .service-dept {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+  .service-dept.active { display: block; }
+  @keyframes fadeIn { from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:none} }
+
+  .dept-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  /* Dept sidebar */
+  .dept-sidebar {
+    background: linear-gradient(160deg, #0d1a30, #0a1322);
+    border: 1px solid var(--border-cyan);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    position: sticky;
+    top: calc(var(--nav-h) + 66px);
+  }
+  .dept-sidebar__icon {
+    width: 52px; height: 52px;
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .dept-sidebar__icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .dept-sidebar__badge {
+    font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--cyan); margin-bottom: 0.4rem;
+  }
+  .dept-sidebar__title {
+    font-family: var(--font-display);
+    font-size: 1.35rem; font-weight: 800;
+    color: var(--white); line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .dept-sidebar__desc {
+    font-size: 0.85rem; color: var(--text-dim); line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  .dept-sidebar__stat {
+    display: flex; align-items: center; gap: 0.65rem;
+    padding: 0.65rem 0;
+    border-top: 1px solid var(--border);
+    font-size: 0.82rem; color: var(--text-muted);
+  }
+  .dept-sidebar__stat svg { width: 14px; height: 14px; fill: none; stroke: var(--cyan); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+  .dept-sidebar__stat strong { color: var(--white); }
+  .dept-sidebar .btn { width: 100%; justify-content: center; margin-top: 1.5rem; }
+
+  /* Service cards grid */
+  .service-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+  .svc-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+  .svc-card:hover {
+    border-color: var(--border-cyan);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,212,255,0.08);
+  }
+  .svc-card__icon {
+    width: 42px; height: 42px;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 0.9rem;
+  }
+  .svc-card__icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .svc-card__title {
+    font-family: var(--font-display);
+    font-size: 1rem; font-weight: 700;
+    color: var(--white); margin-bottom: 0.4rem;
+  }
+  .svc-card__text { font-size: 0.85rem; color: var(--text-dim); line-height: 1.7; }
+  .svc-card__check {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.78rem; color: var(--text-muted); margin-top: 0.75rem;
+  }
+  .svc-card__check svg { width: 13px; height: 13px; fill: none; stroke: var(--cyan); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+  /* ============================================================
+     ABOUT / WHY CHOOSE US
+  ============================================================ */
+  .about-section {
+    padding: 5rem 0;
+    background: var(--bg-2);
+    scroll-margin-top: calc(var(--nav-h) + 56px);
+  }
+  .about-blocks { display: flex; flex-direction: column; gap: 4rem; margin-top: 1rem; }
+  .about-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .about-block.reverse { direction: rtl; }
+  .about-block.reverse > * { direction: ltr; }
+
+  .about-visual {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+  }
+  .about-visual img {
+    width: 100%; height: 300px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+  }
+  .about-visual__badge {
+    position: absolute;
+    bottom: 1rem; left: 1rem;
+    background: rgba(8,13,26,0.9);
+    border: 1px solid var(--border-cyan);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .about-visual__badge-icon {
+    width: 36px; height: 36px;
+    background: var(--cyan-dim); border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-visual__badge-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--cyan); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .about-visual__badge-num { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--white); }
+  .about-visual__badge-label { font-size: 0.72rem; color: var(--text-muted); }
+
+  .about-text__eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 0.6rem; }
+  .about-text__title { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--white); margin-bottom: 1rem; line-height: 1.2; }
+  .about-text__body { font-size: 0.95rem; color: var(--text-dim); line-height: 1.8; margin-bottom: 1.5rem; }
+  .about-text__features { display: flex; flex-direction: column; gap: 0.75rem; }
+  .about-feature {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    font-size: 0.88rem; color: var(--text-dim); line-height: 1.5;
+  }
+  .about-feature__dot {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--cyan-dim); border: 1px solid var(--border-cyan);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+  }
+  .about-feature__dot svg { width: 10px; height: 10px; fill: none; stroke: var(--cyan); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ============================================================
+     GALLERY
+  ============================================================ */
+  .gallery-section {
+    padding: 5rem 0;
+    background: var(--bg);
+    scroll-margin-top: calc(var(--nav-h) + 56px);
+  }
+  .gallery-tabs {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .gallery-tab {
+    padding: 0.45rem 1.1rem;
+    border-radius: 50px;
+    border: 1.5px solid var(--border);
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--text-muted);
+    background: transparent;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .gallery-tab:hover { border-color: var(--cyan); color: var(--cyan); }
+  .gallery-tab.active { background: var(--cyan); border-color: var(--cyan); color: #080d1a; }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+    min-height: 400px;
+    transition: opacity 0.35s ease;
+  }
+  .gallery-grid.fading { opacity: 0; }
+
+  .gallery-item {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    height: 220px;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid var(--border);
+  }
+  .gallery-item.hidden { display: none; }
+  .gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.07); }
+  .gallery-item__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    opacity: 0;
+    display: flex; align-items: flex-end; padding: 0.75rem;
+    transition: opacity var(--transition);
+  }
+  .gallery-item:hover .gallery-item__overlay { opacity: 1; }
+  .gallery-item__zoom {
+    width: 32px; height: 32px;
+    background: rgba(0,212,255,0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-left: auto;
+  }
+  .gallery-item__zoom svg { width: 16px; height: 16px; fill: none; stroke: var(--cyan); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Pagination */
+  .gallery-pagination {
+    display: flex; justify-content: center; gap: 0.5rem;
+    margin-top: 2rem;
+  }
+  .gallery-page-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    font-size: 0.82rem; font-weight: 700;
+    color: var(--text-muted);
+    background: transparent;
+    cursor: pointer;
+    transition: all var(--transition);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gallery-page-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+  .gallery-page-btn.active { background: var(--cyan); border-color: var(--cyan); color: #080d1a; }
+
+  /* ============================================================
+     LIGHTBOX
+  ============================================================ */
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.96);
+    z-index: 2000;
+    display: none;
+    align-items: center; justify-content: center;
+    padding: 1.5rem;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox__img {
+    max-width: 90vw; max-height: 88vh;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    box-shadow: 0 0 60px rgba(0,212,255,0.15);
+  }
+  .lightbox__close {
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--white); font-size: 1.4rem;
+    transition: background var(--transition);
+  }
+  .lightbox__close:hover { background: rgba(255,255,255,0.15); }
+  .lightbox__nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--white); font-size: 1.2rem;
+    transition: background var(--transition);
+  }
+  .lightbox__nav:hover { background: rgba(0,212,255,0.2); }
+  .lightbox__prev { left: 1rem; }
+  .lightbox__next { right: 1rem; }
+
+  /* ============================================================
+     MAP SECTION
+  ============================================================ */
+  .map-section {
+    padding: 5rem 0;
+    background: var(--bg-2);
+    scroll-margin-top: calc(var(--nav-h) + 56px);
+  }
+  .map-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+  .map-info { display: flex; flex-direction: column; gap: 1.25rem; }
+  .map-info-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .map-info-card__icon {
+    width: 42px; height: 42px; flex-shrink: 0;
+    background: var(--cyan-dim);
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .map-info-card__icon svg { width: 20px; height: 20px; fill: none; stroke: var(--cyan); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .map-info-card__label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem; }
+  .map-info-card__value { font-size: 0.9rem; font-weight: 600; color: var(--white); line-height: 1.5; }
+  .map-info-card__value a { color: var(--cyan); }
+
+  .map-embed {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-cyan);
+    box-shadow: 0 0 40px rgba(0,212,255,0.08);
+    height: 420px;
+    position: relative;
+  }
+  .map-embed iframe {
+    width: 100%; height: 100%; border: none; display: block;
+  }
+  /* Fallback map placeholder */
+  .map-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #0d1a30, #0a1120);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 1rem;
+    position: relative;
+  }
+  .map-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .map-placeholder__pin {
+    position: relative; z-index: 1;
+    width: 52px; height: 52px;
+    background: var(--cyan);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 4px 20px rgba(0,212,255,0.4);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .map-placeholder__pin::after {
+    content: '';
+    width: 18px; height: 18px;
+    background: #080d1a; border-radius: 50%;
+  }
+  .map-placeholder__label {
+    position: relative; z-index: 1;
+    background: rgba(8,13,26,0.9);
+    border: 1px solid var(--border-cyan);
+    border-radius: var(--radius-md);
+    padding: 0.65rem 1.25rem;
+    font-family: var(--font-display);
+    font-size: 0.88rem; font-weight: 700; color: var(--white);
+  }
+
+  /* ============================================================
+     CONTACT
+  ============================================================ */
+  .contact-section {
+    padding: 5rem 0;
+    background: var(--bg);
+    scroll-margin-top: calc(var(--nav-h) + 56px);
+  }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .contact-sidebar {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+  .contact-feature {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex; align-items: flex-start; gap: 0.85rem;
+    transition: border-color var(--transition);
+  }
+  .contact-feature:hover { border-color: var(--border-cyan); }
+  .contact-feature__icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .contact-feature__icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-feature__title { font-size: 0.85rem; font-weight: 700; color: var(--white); margin-bottom: 0.2rem; }
+  .contact-feature__text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+  .contact-feature__text a { color: var(--cyan); }
+
+  .contact-form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+  }
+  .contact-form-card__title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; color: var(--white); margin-bottom: 0.4rem; }
+  .contact-form-card__sub { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+  .form-label { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.04em; }
+  .form-input, .form-textarea, .form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body); font-size: 0.9rem;
+    color: var(--white);
+    outline: none;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    appearance: none;
+  }
+  .form-input:focus, .form-textarea:focus, .form-select:focus {
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+  }
+  .form-textarea { resize: vertical; min-height: 120px; }
+  .form-select option { background: #111c33; }
+  .form-submit {
+    width: 100%; padding: 1rem;
+    background: var(--cyan); color: #080d1a;
+    border: none; border-radius: 50px;
+    font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
+    cursor: pointer;
+    transition: transform var(--transition), box-shadow var(--transition);
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,0.35); }
+  .form-submit:disabled { background: #1e293b; color: #475569; cursor: not-allowed; box-shadow: none; transform: none; }
+
+  /* Success */
+  .form-success {
+    display: none; text-align: center; padding: 3rem 1rem;
+  }
+  .form-success.show { display: block; }
+  .form-success__icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.3);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  .form-success__icon svg { width: 30px; height: 30px; fill: none; stroke: var(--green); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .form-success__title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; color: var(--white); margin-bottom: 0.5rem; }
+  .form-success__text { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6; }
+
+  /* ============================================================
+     FLOATING CONTACTS
+  ============================================================ */
+  .float-btns {
+    position: fixed; bottom: 1.75rem; right: 1.75rem;
+    display: flex; flex-direction: column; gap: 0.75rem;
+    z-index: 500;
+  }
+  .float-btn {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 50px;
+    font-size: 0.82rem; font-weight: 700;
+    color: #080d1a;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .float-btn:hover { transform: translateY(-2px); }
+  .float-btn--whatsapp { background: #25d366; }
+  .float-btn--whatsapp:hover { box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
+  .float-btn--call { background: var(--cyan); }
+  .float-btn--call:hover { box-shadow: 0 8px 24px rgba(0,212,255,0.4); }
+  .float-btn svg { width: 16px; height: 16px; fill: none; stroke: #080d1a; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+  /* ============================================================
+     FOOTER
+  ============================================================ */
+  .footer {
+    background: #000;
+    border-top: 1px solid var(--border);
+    padding-top: 3.5rem;
+  }
+  .footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  .footer__brand p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; margin-top: 1rem; max-width: 260px; }
+  .footer__col-title {
+    font-family: var(--font-display);
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--white); margin-bottom: 1rem;
+  }
+  .footer__links { display: flex; flex-direction: column; gap: 0.65rem; }
+  .footer__links a { font-size: 0.85rem; color: var(--text-muted); transition: color var(--transition); }
+  .footer__links a:hover { color: var(--cyan); }
+  .footer__contact-item {
+    display: flex; align-items: flex-start; gap: 0.65rem;
+    font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.5;
+  }
+  .footer__contact-item svg { width: 15px; height: 15px; fill: none; stroke: var(--cyan); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 2px; }
+  .footer__contact-item a { color: var(--cyan); }
+  .footer__bottom {
+    border-top: 1px solid #111;
+    padding: 1.25rem 0;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 0.75rem;
+  }
+  .footer__copy { font-size: 0.8rem; color: #374151; }
+  .footer__bottom-links { display: flex; gap: 1.5rem; }
+  .footer__bottom-links a { font-size: 0.8rem; color: #374151; transition: color var(--transition); }
+  .footer__bottom-links a:hover { color: var(--cyan); }
+
+  /* ============================================================
+     RESPONSIVE
+  ============================================================ */
+  @media (max-width: 1024px) {
+    .dept-layout { grid-template-columns: 1fr; }
+    .dept-sidebar { position: static; }
+    .service-cards { grid-template-columns: repeat(2, 1fr); }
+    .about-block, .about-block.reverse { grid-template-columns: 1fr; direction: ltr; }
+    .about-visual { order: -1; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .map-layout { grid-template-columns: 1fr; }
+    .map-embed { height: 320px; }
+    .footer__grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .counters-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .navbar__nav, .navbar__cta { display: none; }
+    .navbar__hamburger { display: flex; }
+    .section-nav { top: var(--nav-h); }
+    .service-dept-nav { flex-direction: column; }
+    .sdept-btn { min-width: unset; }
+    .contact-layout { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .form-row { grid-template-columns: 1fr; }
+    .float-btn span { display: none; }
+    .float-btn { padding: 0.85rem; border-radius: 50%; width: 48px; height: 48px; justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-item { height: 160px; }
+    .hero__title { font-size: 2rem; }
+    .footer__grid { grid-template-columns: 1fr; }
+    .counters-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  </style>
+</head>
+<body>
+
+<!-- ==================== FLOATING BUTTONS ==================== -->
+<div class="float-btns">
+  <a href="https://wa.me/2349039719412" target="_blank" rel="noopener noreferrer" class="float-btn float-btn--whatsapp" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+  <a href="tel:08135810094" class="float-btn float-btn--call" aria-label="Call us">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 5.55 5.55l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+    <span>Call Now</span>
+  </a>
+</div>
+
+<!-- ==================== LIGHTBOX ==================== -->
+<div id="lightbox" class="lightbox" role="dialog" aria-label="Image viewer" aria-modal="true">
+  <button class="lightbox__close" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lightbox__nav lightbox__prev" id="lbPrev" aria-label="Previous image">&#8249;</button>
+  <img class="lightbox__img" id="lbImg" src="" alt="Project image" />
+  <button class="lightbox__nav lightbox__next" id="lbNext" aria-label="Next image">&#8250;</button>
+</div>
+
+<!-- ==================== NAVBAR ==================== -->
+<header class="navbar" id="navbar" role="banner">
+  <div class="container">
+    <div class="navbar__inner">
+      <a href="#hero" class="navbar__logo" aria-label="Kingsguard Home">
+        <div class="navbar__logo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="navbar__logo-text">
+          <span class="navbar__logo-name">Kingsguard</span>
+          <span class="navbar__logo-sub">Technology &amp; Security</span>
+        </div>
+      </a>
+
+      <nav class="navbar__nav" aria-label="Main navigation">
+        <a href="#hero"     class="navbar__link active" data-section="hero">Home</a>
+        <a href="#services" class="navbar__link" data-section="services">Services</a>
+        <a href="#gallery"  class="navbar__link" data-section="gallery">Gallery</a>
+        <a href="#about"    class="navbar__link" data-section="about">About</a>
+        <a href="#location" class="navbar__link" data-section="location">Location</a>
+        <a href="#contact"  class="navbar__link" data-section="contact">Contact</a>
+      </nav>
+
+      <a href="#contact" class="navbar__cta">Get Free Quote</a>
+
+      <button class="navbar__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <nav class="navbar__mobile" id="mobileNav" aria-label="Mobile navigation">
+    <a href="#hero"     class="navbar__link" data-section="hero">Home</a>
+    <a href="#services" class="navbar__link" data-section="services">Services</a>
+    <a href="#gallery"  class="navbar__link" data-section="gallery">Gallery</a>
+    <a href="#about"    class="navbar__link" data-section="about">About</a>
+    <a href="#location" class="navbar__link" data-section="location">Location</a>
+    <a href="#contact"  class="navbar__link" data-section="contact">Contact</a>
+    <a href="#contact"  class="navbar__cta" style="margin-top:0.5rem;">Get Free Quote</a>
+  </nav>
+</header>
+
+<!-- ==================== SECTION NAV ==================== -->
+<div class="section-nav" aria-label="Jump to section">
+  <div class="container">
+    <div class="section-nav__inner">
+      <a href="#services"  class="snav-pill active" data-snav="services"><span class="snav-pill__dot" aria-hidden="true"></span>CCTV &amp; Security</a>
+      <a href="#solar"     class="snav-pill" data-snav="solar"><span class="snav-pill__dot" aria-hidden="true"></span>Solar &amp; Energy</a>
+      <a href="#access"    class="snav-pill" data-snav="access"><span class="snav-pill__dot" aria-hidden="true"></span>Access Control</a>
+      <a href="#audio"     class="snav-pill" data-snav="audio"><span class="snav-pill__dot" aria-hidden="true"></span>Audio Systems</a>
+      <a href="#gallery"   class="snav-pill" data-snav="gallery"><span class="snav-pill__dot" aria-hidden="true"></span>Project Gallery</a>
+      <a href="#about"     class="snav-pill" data-snav="about"><span class="snav-pill__dot" aria-hidden="true"></span>Why Kingsguard</a>
+      <a href="#location"  class="snav-pill" data-snav="location"><span class="snav-pill__dot" aria-hidden="true"></span>Our Location</a>
+      <a href="#contact"   class="snav-pill" data-snav="contact"><span class="snav-pill__dot" aria-hidden="true"></span>Get a Quote</a>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero" id="hero" aria-labelledby="hero-title">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__scan" aria-hidden="true"></div>
+
+  <div class="hero__content">
+    <div class="hero__eyebrow">
+      <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+      Abuja's Trusted Security &amp; Tech Partner
+    </div>
+
+    <h1 class="hero__title" id="hero-title">
+      Advanced <em>Security</em> &amp;<br>
+      <span class="amber">Solar Energy</span> Solutions
+    </h1>
+
+    <p class="hero__subtitle">
+      Professional CCTV installation, solar power systems, inverter backup, smart access control, electric fencing, and ceiling audio — all from a single trusted team with 10+ years and 2,000+ successful installations across Abuja.
+    </p>
+
+    <div class="hero__actions">
+      <a href="#contact" class="btn btn--cyan btn--lg">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Get Free Consultation
+      </a>
+      <a href="#services" class="btn btn--outline btn--lg">
+        Explore Services
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+
+    <div class="hero__tags" aria-label="Service categories">
+      <span class="hero__tag">CCTV &amp; Surveillance</span>
+      <span class="hero__tag">Solar CCTV</span>
+      <span class="hero__tag">Solar Systems</span>
+      <span class="hero__tag">Inverter &amp; Battery</span>
+      <span class="hero__tag">Electric Fencing</span>
+      <span class="hero__tag">Access Control</span>
+      <span class="hero__tag">Video Doorbells</span>
+      <span class="hero__tag">Ceiling Speakers</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TRUST STRIP ==================== -->
+<div class="trust-strip" role="complementary" aria-label="Certifications and guarantees">
+  <div class="container">
+    <div class="trust-strip__inner">
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Certified Installer
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Energy Experts
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        24 / 7 Support
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Quality Guaranteed
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Residential &amp; Commercial
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== COUNTERS ==================== -->
+<div class="counters-section" aria-label="Company statistics">
+  <div class="container">
+    <div class="counters-grid">
+      <div class="counter-block reveal">
+        <div class="counter-block__num" data-target="2000" id="cnt-1">0</div>
+        <div class="counter-block__label">Successful Installs</div>
+      </div>
+      <div class="counter-block reveal delay-2">
+        <div class="counter-block__num amber-num" data-target="350" id="cnt-2">0</div>
+        <div class="counter-block__label">Solar Projects</div>
+      </div>
+      <div class="counter-block reveal delay-4">
+        <div class="counter-block__num" data-target="10" id="cnt-3">0</div>
+        <div class="counter-block__label">Years of Service</div>
+      </div>
+      <div class="counter-block reveal delay-6">
+        <div class="counter-block__num amber-num" data-target="100" id="cnt-4">0</div>
+        <div class="counter-block__label">% Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SERVICES ==================== -->
+<section class="services-section" id="services" aria-labelledby="services-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Our Solutions
+      </div>
+      <h2 class="section-title" id="services-title">Everything You Need, One Team</h2>
+      <p class="section-sub">From perimeter security to power independence — Kingsguard delivers integrated technology solutions for homes, offices, hotels, schools, warehouses, and commercial properties.</p>
+    </div>
+
+    <!-- Dept Switcher -->
+    <div class="service-dept-nav reveal delay-2" role="tablist" aria-label="Service categories">
+      <button class="sdept-btn active" role="tab" aria-selected="true" aria-controls="dept-cctv" data-dept="cctv">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        CCTV &amp; Security
+      </button>
+      <button class="sdept-btn" role="tab" aria-selected="false" aria-controls="dept-solar" data-dept="solar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        Solar &amp; Energy
+      </button>
+      <button class="sdept-btn" role="tab" aria-selected="false" aria-controls="dept-access" data-dept="access">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Access Control
+      </button>
+      <button class="sdept-btn" role="tab" aria-selected="false" aria-controls="dept-audio" data-dept="audio">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        Audio Systems
+      </button>
+    </div>
+
+    <!-- DEPT: CCTV -->
+    <div class="service-dept active" id="dept-cctv" role="tabpanel" aria-labelledby="">
+      <div class="dept-layout">
+        <div class="dept-sidebar">
+          <div class="dept-sidebar__icon" style="background:rgba(0,212,255,0.12); color:var(--cyan);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          </div>
+          <div class="dept-sidebar__badge">Department</div>
+          <div class="dept-sidebar__title">CCTV &amp; Surveillance</div>
+          <p class="dept-sidebar__desc">Crystal-clear 4K monitoring, AI motion detection, and remote mobile access — keeping you connected from anywhere, 24/7.</p>
+          <div class="dept-sidebar__stat"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span><strong>24/7</strong> remote monitoring</span></div>
+          <div class="dept-sidebar__stat"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span><strong>4K &amp; HD</strong> camera options</span></div>
+          <div class="dept-sidebar__stat"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span><strong>Residential &amp;</strong> commercial</span></div>
+          <a href="#contact" class="btn btn--cyan btn--sm">Get CCTV Quote</a>
+        </div>
+        <div class="service-cards">
+          <div class="svc-card reveal">
+            <div class="svc-card__icon" style="background:rgba(0,212,255,0.1); color:var(--cyan);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            </div>
+            <div class="svc-card__title">Advanced CCTV Surveillance</div>
+            <p class="svc-card__text">Protect what matters with crystal-clear 4K surveillance. AI-powered motion detection, night vision, and mobile app access keep you in control from anywhere in the world.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> 4K &amp; 1080p options</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Mobile remote access</div>
+          </div>
+          <div class="svc-card reveal delay-1">
+            <div class="svc-card__icon" style="background:rgba(245,158,11,0.1); color:var(--amber);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+            </div>
+            <div class="svc-card__title">Solar-Powered CCTV Cameras</div>
+            <p class="svc-card__text">Security anywhere — even without grid power. Solar cameras offer wireless, 24/7 monitoring for gates, perimeters, remote farms, and off-grid locations.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> No power cable needed</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Perfect for perimeter &amp; gates</div>
+          </div>
+          <div class="svc-card reveal delay-2">
+            <div class="svc-card__icon" style="background:rgba(0,212,255,0.1); color:var(--cyan);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <div class="svc-card__title">Video Doorbells</div>
+            <p class="svc-card__text">See and speak to visitors from your smartphone. Smart doorbells deliver instant alerts, two-way audio, and HD video recording every time someone approaches your door.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Two-way audio</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Motion alert notifications</div>
+          </div>
+          <div class="svc-card reveal delay-3">
+            <div class="svc-card__icon" style="background:rgba(220,38,38,0.12); color:#f87171;">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="svc-card__title">Electric &amp; Perimeter Fencing</div>
+            <p class="svc-card__text">Deter intruders with professional electric fencing and high-tensile security wire. Active physical barriers that protect estates, warehouses, and commercial compounds.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Active deterrent system</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Alarm integration available</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEPT: SOLAR -->
+    <div class="service-dept" id="dept-solar" role="tabpanel">
+      <div class="dept-layout">
+        <div class="dept-sidebar">
+          <div class="dept-sidebar__icon" style="background:rgba(245,158,11,0.12); color:var(--amber);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="dept-sidebar__badge">Department</div>
+          <div class="dept-sidebar__title">Solar &amp; Energy Systems</div>
+          <p class="dept-sidebar__desc">High-efficiency solar panels, lithium batteries, and inverters — engineered to eliminate downtime and reduce your energy bill permanently.</p>
+          <div class="dept-sidebar__stat"><svg viewBox="0 0 24 24"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span><strong>350+</strong> solar projects completed</span></div>
+          <div class="dept-sidebar__stat"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span><strong>Lithium</strong> &amp; lead-acid batteries</span></div>
+          <div class="dept-sidebar__stat"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span><strong>Home &amp;</strong> commercial systems</span></div>
+          <a href="#contact" class="btn btn--amber btn--sm">Get Solar Quote</a>
+        </div>
+        <div class="service-cards">
+          <div class="svc-card reveal">
+            <div class="svc-card__icon" style="background:rgba(245,158,11,0.1); color:var(--amber);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+            </div>
+            <div class="svc-card__title">Solar Panel Systems</div>
+            <p class="svc-card__text">Harness the power of the sun with our high-efficiency solar panel installations. Custom-designed systems that reduce your energy bills and provide sustainable power for homes and businesses.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> On-grid &amp; off-grid options</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Custom sizing for every need</div>
+          </div>
+          <div class="svc-card reveal delay-1">
+            <div class="svc-card__icon" style="background:rgba(0,212,255,0.1); color:var(--cyan);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div class="svc-card__title">Inverter &amp; Battery Backup</div>
+            <p class="svc-card__text">Never lose power again. Reliable inverter and lithium-ion battery solutions that keep your critical appliances running seamlessly during grid outages — for hours or even days.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Lithium-ion &amp; lead-acid</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Automatic switchover</div>
+          </div>
+          <div class="svc-card reveal delay-2">
+            <div class="svc-card__icon" style="background:rgba(245,158,11,0.1); color:var(--amber);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="svc-card__title">Solar CCTV Cameras</div>
+            <p class="svc-card__text">The perfect fusion of solar energy and surveillance technology. Wireless, off-grid cameras with integrated solar panels and battery backup — ideal for farms, estates, and remote sites.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> No electrician needed</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Self-sustaining 24/7</div>
+          </div>
+          <div class="svc-card reveal delay-3">
+            <div class="svc-card__icon" style="background:rgba(34,197,94,0.1); color:var(--green);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <div class="svc-card__title">Energy Consultation</div>
+            <p class="svc-card__text">Not sure what size system you need? Our energy experts will assess your power consumption, design an optimised solution, and give you a full cost-benefit analysis — free of charge.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Free site assessment</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> ROI projection included</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEPT: ACCESS -->
+    <div class="service-dept" id="dept-access" role="tabpanel">
+      <div class="dept-layout">
+        <div class="dept-sidebar">
+          <div class="dept-sidebar__icon" style="background:rgba(0,212,255,0.12); color:var(--cyan);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="dept-sidebar__badge">Department</div>
+          <div class="dept-sidebar__title">Smart Access Control</div>
+          <p class="dept-sidebar__desc">Biometric, RFID, and smart-lock systems that give you complete, auditable control over who enters your premises.</p>
+          <div class="dept-sidebar__stat"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span><strong>Biometric &amp;</strong> RFID options</span></div>
+          <div class="dept-sidebar__stat"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span><strong>Multi-door</strong> management</span></div>
+          <a href="#contact" class="btn btn--cyan btn--sm">Get Access Control Quote</a>
+        </div>
+        <div class="service-cards">
+          <div class="svc-card reveal">
+            <div class="svc-card__icon" style="background:rgba(0,212,255,0.1); color:var(--cyan);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="svc-card__title">Biometric Access Systems</div>
+            <p class="svc-card__text">Fingerprint and facial recognition systems that eliminate key duplication risk. Manage access for every staff member individually, with full audit trails and time-attendance reports.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Fingerprint &amp; face recognition</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Full audit trail</div>
+          </div>
+          <div class="svc-card reveal delay-1">
+            <div class="svc-card__icon" style="background:rgba(245,158,11,0.1); color:var(--amber);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            </div>
+            <div class="svc-card__title">RFID &amp; Card Access</div>
+            <p class="svc-card__text">Proximity card and key fob systems for offices, apartments, and gated communities. Easily add, suspend, or remove access credentials without changing locks.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Instant card deactivation</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Multi-zone control</div>
+          </div>
+          <div class="svc-card reveal delay-2">
+            <div class="svc-card__icon" style="background:rgba(0,212,255,0.1); color:var(--cyan);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <div class="svc-card__title">Smart Locks &amp; Video Intercom</div>
+            <p class="svc-card__text">App-controlled smart locks with remote unlock capability. Video intercom systems let you screen and grant access to visitors from your phone — even when you're not on-site.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Remote unlock via app</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Video intercom integration</div>
+          </div>
+          <div class="svc-card reveal delay-3">
+            <div class="svc-card__icon" style="background:rgba(34,197,94,0.1); color:var(--green);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div class="svc-card__title">Boom Gates &amp; Turnstiles</div>
+            <p class="svc-card__text">Automated boom barriers and turnstile systems for car parks, estates, and commercial entrances. Integrated with RFID, camera recognition, or guard station control.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Vehicle &amp; pedestrian control</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> ANPR camera option</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEPT: AUDIO -->
+    <div class="service-dept" id="dept-audio" role="tabpanel">
+      <div class="dept-layout">
+        <div class="dept-sidebar">
+          <div class="dept-sidebar__icon" style="background:rgba(124,58,237,0.15); color:#a78bfa;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div class="dept-sidebar__badge">Department</div>
+          <div class="dept-sidebar__title">Ceiling Speakers &amp; Audio</div>
+          <p class="dept-sidebar__desc">Sleek, integrated ceiling speaker systems for homes, offices, hotels, retail stores, and restaurants — invisible yet immersive.</p>
+          <div class="dept-sidebar__stat"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg><span><strong>Multi-zone</strong> audio control</span></div>
+          <div class="dept-sidebar__stat"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/></svg><span><strong>Commercial &amp;</strong> residential fit-out</span></div>
+          <a href="#contact" class="btn btn--ghost btn--sm" style="border-color:rgba(167,139,250,0.4); color:#a78bfa; background:rgba(124,58,237,0.12);">Get Audio Quote</a>
+        </div>
+        <div class="service-cards">
+          <div class="svc-card reveal">
+            <div class="svc-card__icon" style="background:rgba(124,58,237,0.12); color:#a78bfa;">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <div class="svc-card__title">In-Ceiling Speaker Installation</div>
+            <p class="svc-card__text">Premium flush-mount ceiling speakers that disappear into your ceiling while delivering rich, room-filling sound. Ideal for lounges, offices, reception areas, and retail environments.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Flush-mount, invisible fit</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Multiple rooms, one system</div>
+          </div>
+          <div class="svc-card reveal delay-1">
+            <div class="svc-card__icon" style="background:rgba(0,212,255,0.1); color:var(--cyan);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </div>
+            <div class="svc-card__title">Multi-Zone Audio Control</div>
+            <p class="svc-card__text">Play different audio in different rooms simultaneously — controlled from your phone, tablet, or a wall panel. Perfect for hotels, restaurants, and multi-floor offices.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Zone-independent control</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> App &amp; physical panel options</div>
+          </div>
+          <div class="svc-card reveal delay-2">
+            <div class="svc-card__icon" style="background:rgba(245,158,11,0.1); color:var(--amber);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <div class="svc-card__title">PA &amp; Announcement Systems</div>
+            <p class="svc-card__text">Public address systems for schools, mosques, churches, warehouses, and public buildings. Clear, intelligible voice coverage with emergency override capability.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Wide-area coverage</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Emergency override mode</div>
+          </div>
+          <div class="svc-card reveal delay-3">
+            <div class="svc-card__icon" style="background:rgba(124,58,237,0.12); color:#a78bfa;">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+            </div>
+            <div class="svc-card__title">Home Theatre Integration</div>
+            <p class="svc-card__text">Full home cinema and entertainment room setups — projectors, screens, surround sound, acoustic treatment, and smart lighting — tailored to your space and budget.</p>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Projector &amp; screen setup</div>
+            <div class="svc-card__check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> Surround sound configuration</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== GALLERY ==================== -->
+<section class="gallery-section" id="gallery" aria-labelledby="gallery-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow amber">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Project Showcase
+      </div>
+      <h2 class="section-title" id="gallery-title">Real Work, Real Results</h2>
+      <p class="section-sub">A selection of completed installations across Abuja — from home CCTV setups to large-scale solar and security projects for commercial clients.</p>
+    </div>
+
+    <div class="gallery-tabs reveal delay-2" role="tablist" aria-label="Gallery pages">
+      <button class="gallery-tab active" data-page="1">Page 1</button>
+      <button class="gallery-tab" data-page="2">Page 2</button>
+      <button class="gallery-tab" data-page="3">Page 3</button>
+      <button class="gallery-tab" data-page="4">Page 4</button>
+      <button class="gallery-tab" data-page="5">Page 5</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Page 1 -->
+      <div class="gallery-item p1" data-src="images/img_1781610415243.jpg"><img src="images/img_1781610415243.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p1" data-src="images/IMG-20260614-WA0003_1.jpg"><img src="images/IMG-20260614-WA0003_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p1" data-src="images/IMG-20260614-WA0004_1.jpg"><img src="images/IMG-20260614-WA0004_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p1" data-src="images/IMG-20260614-WA0005_1.jpg"><img src="images/IMG-20260614-WA0005_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p1" data-src="images/IMG-20260614-WA0006_1.jpg"><img src="images/IMG-20260614-WA0006_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p1" data-src="images/IMG-20260614-WA0008_1.jpg"><img src="images/IMG-20260614-WA0008_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p1" data-src="images/IMG-20260614-WA0009.jpg"><img src="images/IMG-20260614-WA0009.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p1" data-src="images/IMG-20260614-WA0010_1.jpg"><img src="images/IMG-20260614-WA0010_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <!-- Page 2 -->
+      <div class="gallery-item p2 hidden" data-src="images/IMG-20260614-WA0013_1.jpg"><img src="images/IMG-20260614-WA0013_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p2 hidden" data-src="images/IMG-20260614-WA0013_2.jpg"><img src="images/IMG-20260614-WA0013_2.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p2 hidden" data-src="images/IMG-20260614-WA0014_1.jpg"><img src="images/IMG-20260614-WA0014_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p2 hidden" data-src="images/IMG-20260614-WA0016_1.jpg"><img src="images/IMG-20260614-WA0016_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p2 hidden" data-src="images/IMG-20260614-WA0017_1.jpg"><img src="images/IMG-20260614-WA0017_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p2 hidden" data-src="images/IMG-20260614-WA0018_1.jpg"><img src="images/IMG-20260614-WA0018_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p2 hidden" data-src="images/IMG-20260614-WA0022_1.jpg"><img src="images/IMG-20260614-WA0022_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p2 hidden" data-src="images/IMG-20260614-WA0024_1.jpg"><img src="images/IMG-20260614-WA0024_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <!-- Page 3 -->
+      <div class="gallery-item p3 hidden" data-src="images/IMG-20260614-WA0025.jpg"><img src="images/IMG-20260614-WA0025.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p3 hidden" data-src="images/IMG-20260614-WA0026.jpg"><img src="images/IMG-20260614-WA0026.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p3 hidden" data-src="images/IMG-20260614-WA0028_1.jpg"><img src="images/IMG-20260614-WA0028_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p3 hidden" data-src="images/IMG-20260614-WA0030_1.jpg"><img src="images/IMG-20260614-WA0030_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p3 hidden" data-src="images/IMG-20260614-WA0033_1.jpg"><img src="images/IMG-20260614-WA0033_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p3 hidden" data-src="images/IMG-20260614-WA0036_1.jpg"><img src="images/IMG-20260614-WA0036_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p3 hidden" data-src="images/IMG-20260614-WA0037.jpg"><img src="images/IMG-20260614-WA0037.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p3 hidden" data-src="images/IMG-20260614-WA0039.jpg"><img src="images/IMG-20260614-WA0039.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <!-- Page 4 -->
+      <div class="gallery-item p4 hidden" data-src="images/IMG-20260614-WA0041.jpg"><img src="images/IMG-20260614-WA0041.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p4 hidden" data-src="images/IMG-20260614-WA0042.jpg"><img src="images/IMG-20260614-WA0042.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p4 hidden" data-src="images/IMG-20260614-WA0043.jpg"><img src="images/IMG-20260614-WA0043.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p4 hidden" data-src="images/IMG-20260614-WA0045_1.jpg"><img src="images/IMG-20260614-WA0045_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p4 hidden" data-src="images/IMG-20260614-WA0046_1.jpg"><img src="images/IMG-20260614-WA0046_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p4 hidden" data-src="images/IMG-20260614-WA0051.jpg"><img src="images/IMG-20260614-WA0051.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p4 hidden" data-src="images/IMG-20260614-WA0052.jpg"><img src="images/IMG-20260614-WA0052.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p4 hidden" data-src="images/IMG-20260614-WA0054.jpg"><img src="images/IMG-20260614-WA0054.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <!-- Page 5 -->
+      <div class="gallery-item p5 hidden" data-src="images/IMG-20260614-WA0056_1.jpg"><img src="images/IMG-20260614-WA0056_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p5 hidden" data-src="images/IMG-20260614-WA0057_1.jpg"><img src="images/IMG-20260614-WA0057_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p5 hidden" data-src="images/IMG-20260614-WA0059_1.jpg"><img src="images/IMG-20260614-WA0059_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p5 hidden" data-src="images/IMG-20260614-WA0062_1.jpg"><img src="images/IMG-20260614-WA0062_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p5 hidden" data-src="images/IMG-20260614-WA0064_1.jpg"><img src="images/IMG-20260614-WA0064_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p5 hidden" data-src="images/IMG-20260614-WA0065_1.jpg"><img src="images/IMG-20260614-WA0065_1.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p5 hidden" data-src="images/IMG-20260614-WA0066.jpg"><img src="images/IMG-20260614-WA0066.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+      <div class="gallery-item p5 hidden" data-src="images/IMG-20260614-WA0068.jpg"><img src="images/IMG-20260614-WA0068.jpg" alt="Kingsguard project" loading="lazy" /><div class="gallery-item__overlay"><div class="gallery-item__zoom"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+    </div>
+
+    <div class="gallery-pagination reveal" aria-label="Gallery pages">
+      <button class="gallery-page-btn active" data-page="1" aria-label="Page 1">1</button>
+      <button class="gallery-page-btn" data-page="2" aria-label="Page 2">2</button>
+      <button class="gallery-page-btn" data-page="3" aria-label="Page 3">3</button>
+      <button class="gallery-page-btn" data-page="4" aria-label="Page 4">4</button>
+      <button class="gallery-page-btn" data-page="5" aria-label="Page 5">5</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ABOUT ==================== -->
+<section class="about-section" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Why Kingsguard
+      </div>
+      <h2 class="section-title" id="about-title">Trusted Because We Deliver</h2>
+      <p class="section-sub">10+ years of honest work, qualified technicians, and a commitment to getting every installation right the first time.</p>
+    </div>
+
+    <div class="about-blocks">
+
+      <div class="about-block">
+        <div class="about-visual reveal-left">
+          <img src="images/cctv.webp" alt="Kingsguard technician performing professional installation" />
+          <div class="about-visual__badge">
+            <div class="about-visual__badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <div class="about-visual__badge-num">2,000+</div>
+              <div class="about-visual__badge-label">Installations completed</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="about-text__eyebrow">Professional Installation</div>
+          <h3 class="about-text__title">Certified Technicians, Global Standards</h3>
+          <p class="about-text__body">Every Kingsguard installation is carried out by trained, certified technicians who follow international best practices. We don't cut corners — we plan cable runs, test every connection, and commission each system before we leave your site.</p>
+          <div class="about-text__features">
+            <div class="about-feature"><div class="about-feature__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Structured cable management on every job</div>
+            <div class="about-feature"><div class="about-feature__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Full system test and sign-off before handover</div>
+            <div class="about-feature"><div class="about-feature__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Residential, commercial, and industrial experience</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-block reverse">
+        <div class="about-visual reveal-right">
+          <img src="images/vc.avif" alt="Modern security technology and AI surveillance" />
+          <div class="about-visual__badge">
+            <div class="about-visual__badge-icon" style="background:rgba(245,158,11,0.15);"><svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <div>
+              <div class="about-visual__badge-num">350+</div>
+              <div class="about-visual__badge-label">Solar projects delivered</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-left">
+          <div class="about-text__eyebrow">Modern Equipment</div>
+          <h3 class="about-text__title">AI Surveillance &amp; Smart Tech</h3>
+          <p class="about-text__body">We only supply and install equipment we trust — sourced from leading manufacturers in surveillance, solar, and access control. AI-powered cameras, lithium battery banks, and smart locks that work reliably for years, not months.</p>
+          <div class="about-text__features">
+            <div class="about-feature"><div class="about-feature__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>AI motion detection and facial recognition cameras</div>
+            <div class="about-feature"><div class="about-feature__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Tier-1 lithium batteries with 10-year lifespan</div>
+            <div class="about-feature"><div class="about-feature__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Smart systems with mobile app management</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-block">
+        <div class="about-visual reveal-left">
+          <img src="images/ccc.jpg" alt="24/7 customer support team" />
+          <div class="about-visual__badge">
+            <div class="about-visual__badge-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div>
+              <div class="about-visual__badge-num">24 / 7</div>
+              <div class="about-visual__badge-label">Support availability</div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <div class="about-text__eyebrow">After-Sales Support</div>
+          <h3 class="about-text__title">We're Here After the Installation</h3>
+          <p class="about-text__body">Our relationship doesn't end at handover. Kingsguard offers ongoing maintenance, remote diagnostics, and fast on-site response — because a security system that isn't working is worse than no system at all. Reach us via WhatsApp, phone, or email any time.</p>
+          <div class="about-text__features">
+            <div class="about-feature"><div class="about-feature__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>24/7 WhatsApp and phone support</div>
+            <div class="about-feature"><div class="about-feature__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Remote diagnostics for camera and NVR issues</div>
+            <div class="about-feature"><div class="about-feature__dot"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Scheduled maintenance plans available</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LOCATION / MAP ==================== -->
+<section class="map-section" id="location" aria-labelledby="location-title">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Find Us
+      </div>
+      <h2 class="section-title" id="location-title">Visit Our Showroom</h2>
+      <p class="section-sub" style="margin-inline:auto;">Come see our products and completed setups in person. Our team at Dei Dei International Market is ready to walk you through every solution.</p>
+    </div>
+
+    <div class="map-layout">
+      <div class="map-info reveal-left">
+
+        <div class="map-info-card">
+          <div class="map-info-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <div class="map-info-card__label">Office Address</div>
+            <div class="map-info-card__value">Zone A2, Dei Dei International Market<br>FCT, Abuja, Nigeria</div>
+          </div>
+        </div>
+
+        <div class="map-info-card">
+          <div class="map-info-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 5.55 5.55l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg></div>
+          <div>
+            <div class="map-info-card__label">Phone Numbers</div>
+            <div class="map-info-card__value"><a href="tel:09039719412">09039719412</a> (WhatsApp)<br><a href="tel:08135810094">08135810094</a></div>
+          </div>
+        </div>
+
+        <div class="map-info-card">
+          <div class="map-info-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div>
+            <div class="map-info-card__label">Email</div>
+            <div class="map-info-card__value"><a href="mailto:kingsguardtechnologies@gmail.com">kingsguardtechnologies@gmail.com</a></div>
+          </div>
+        </div>
+
+        <div class="map-info-card">
+          <div class="map-info-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div>
+            <div class="map-info-card__label">Business Hours</div>
+            <div class="map-info-card__value">Mon – Sat: 8:00 AM – 7:00 PM<br>Sunday: By appointment<br><span style="color:var(--cyan); font-size:0.8rem;">WhatsApp support available 24/7</span></div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/2349039719412" target="_blank" rel="noopener" class="btn btn--cyan" style="width:100%; justify-content:center;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+
+      <div class="map-embed reveal-right">
+        <!-- Google Maps embed for Dei Dei International Market, Abuja -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.988!2d7.3299!3d9.0765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e74e8a9c3c7f3%3A0x5e9e9d0a3e3e3e3e!2sDei%20Dei%20International%20Market%2C%20Abuja!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng"
+          width="100%" height="100%"
+          style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Kingsguard office location — Dei Dei International Market, Abuja">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section class="contact-section" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Get in Touch
+      </div>
+      <h2 class="section-title" id="contact-title">Request a Free Quote</h2>
+      <p class="section-sub">Tell us what you need — we'll get back to you within 24 hours with a detailed, no-obligation proposal.</p>
+    </div>
+
+    <div class="contact-layout">
+      <div class="contact-sidebar reveal-left">
+        <div class="contact-feature">
+          <div class="contact-feature__icon" style="background:rgba(0,212,255,0.1); color:var(--cyan);">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div class="contact-feature__title">Free Site Assessment</div>
+            <p class="contact-feature__text">We visit your property, assess the best camera positions, cable routes, and system design — at no cost.</p>
+          </div>
+        </div>
+        <div class="contact-feature">
+          <div class="contact-feature__icon" style="background:rgba(245,158,11,0.1); color:var(--amber);">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div>
+            <div class="contact-feature__title">Transparent Pricing</div>
+            <p class="contact-feature__text">No hidden charges. You'll receive a full itemised quote before any work begins, with clear payment milestones.</p>
+          </div>
+        </div>
+        <div class="contact-feature">
+          <div class="contact-feature__icon" style="background:rgba(34,197,94,0.1); color:var(--green);">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="contact-feature__title">Warranty on All Installs</div>
+            <p class="contact-feature__text">All our installations come with a parts and labour warranty. Equipment defects are resolved at no extra cost within the warranty period.</p>
+          </div>
+        </div>
+        <div class="contact-feature">
+          <div class="contact-feature__icon" style="background:rgba(0,212,255,0.1); color:var(--cyan);">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <div>
+            <div class="contact-feature__title">Fast Response</div>
+            <p class="contact-feature__text">Reach us instantly on <a href="https://wa.me/2349039719412">WhatsApp: 09039719412</a> or call <a href="tel:08135810094">08135810094</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card reveal-right">
+        <div class="contact-form-card__title">Send Your Enquiry</div>
+        <p class="contact-form-card__sub">Fill in the form below and our team will respond within one business day with a tailored proposal.</p>
+
+        <div class="form-success" id="formSuccess">
+          <div class="form-success__icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="form-success__title">Message Sent!</div>
+          <p class="form-success__text">Thank you for reaching out to Kingsguard. We'll contact you within 24 hours to discuss your project.</p>
+          <button class="btn btn--ghost btn--sm" id="resetFormBtn">Send Another Enquiry</button>
+        </div>
+
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="c-name">Full Name <span style="color:var(--cyan)">*</span></label>
+              <input class="form-input" type="text" id="c-name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-phone">Phone Number <span style="color:var(--cyan)">*</span></label>
+              <input class="form-input" type="tel" id="c-phone" name="phone" placeholder="08XX XXX XXXX" required autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="c-email">Email Address</label>
+            <input class="form-input" type="email" id="c-email" name="email" placeholder="you@example.com" autocomplete="email" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="c-service">Service Required <span style="color:var(--cyan)">*</span></label>
+            <select class="form-input form-select" id="c-service" name="service" required>
+              <option value="" disabled selected>Select a service…</option>
+              <option>CCTV / Surveillance Cameras</option>
+              <option>Solar-Powered CCTV</option>
+              <option>Solar Panel System</option>
+              <option>Inverter &amp; Battery Backup</option>
+              <option>Electric / Perimeter Fencing</option>
+              <option>Smart Access Control</option>
+              <option>Video Doorbell</option>
+              <option>Ceiling Speakers / Audio</option>
+              <option>Multiple Services / Full Package</option>
+              <option>Maintenance / Repair</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="c-property">Property Type</label>
+            <select class="form-input form-select" id="c-property" name="property">
+              <option value="" disabled selected>Select property type…</option>
+              <option>Home / Residential</option>
+              <option>Office</option>
+              <option>Hotel</option>
+              <option>School / Institution</option>
+              <option>Warehouse / Factory</option>
+              <option>Estate / Compound</option>
+              <option>Commercial Building</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="c-message">Tell Us More <span style="color:var(--cyan)">*</span></label>
+            <textarea class="form-input form-textarea" id="c-message" name="message" placeholder="Describe your project — number of cameras, property size, what you're trying to achieve…" required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit" id="submitBtn" disabled>
+            Send Enquiry →
+          </button>
+          <p style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:0.75rem;">
+            Or reach us instantly on <a href="https://wa.me/2349039719412" style="color:var(--cyan);">WhatsApp</a> — fastest response guaranteed.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="#hero" class="navbar__logo" aria-label="Kingsguard Technology">
+          <div class="navbar__logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#080d1a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="navbar__logo-text">
+            <span class="navbar__logo-name">Kingsguard</span>
+            <span class="navbar__logo-sub">Technology &amp; Security</span>
+          </div>
+        </a>
+        <p>Your trusted partner in modern security, solar energy, and smart technology solutions in Abuja and across Nigeria.</p>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Quick Links</div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <a href="#services">CCTV &amp; Security</a>
+          <a href="#services">Solar &amp; Energy</a>
+          <a href="#services">Access Control</a>
+          <a href="#gallery">Project Gallery</a>
+          <a href="#about">About Us</a>
+          <a href="#contact">Get a Quote</a>
+        </nav>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Services</div>
+        <nav class="footer__links" aria-label="Services navigation">
+          <a href="#services">CCTV Cameras</a>
+          <a href="#services">Solar Cameras</a>
+          <a href="#services">Solar Panels</a>
+          <a href="#services">Inverter &amp; Battery</a>
+          <a href="#services">Electric Fencing</a>
+          <a href="#services">Ceiling Speakers</a>
+        </nav>
+      </div>
+
+      <div>
+        <div class="footer__col-title">Contact</div>
+        <div class="footer__contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Zone A2, Dei Dei International Market, FCT, Abuja, Nigeria
+        </div>
+        <div class="footer__contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.54a16 16 0 0 0 5.55 5.55l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+          <span><a href="tel:09039719412">09039719412</a> · <a href="tel:08135810094">08135810094</a></span>
+        </div>
+        <div class="footer__contact-item">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:kingsguardtechnologies@gmail.com">kingsguardtechnologies@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">&copy; 2026 Kingsguard Technology and Security Services. All Rights Reserved.</p>
+      <div class="footer__bottom-links">
+        <a href="#hero">Back to Top ↑</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+/* -------------------------------------------------------
+   NAVBAR: scroll + hamburger + active links
+------------------------------------------------------- */
+const navbar    = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 30);
+}, { passive: true });
+
+hamburger.addEventListener('click', () => {
+  const open = mobileNav.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+});
+
+// Close mobile nav on link click
+mobileNav.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+  });
+});
+
+/* -------------------------------------------------------
+   ACTIVE NAV LINK ON SCROLL
+------------------------------------------------------- */
+const navLinks  = document.querySelectorAll('.navbar__link[data-section]');
+const snavPills = document.querySelectorAll('.snav-pill[data-snav]');
+const sections  = document.querySelectorAll('section[id], div[id]');
+
+const setActive = (id) => {
+  navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+};
+
+const snavObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      setActive(id);
+      snavPills.forEach(p => p.classList.toggle('active', p.dataset.snav === id));
+    }
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+
+document.querySelectorAll('section[id]').forEach(s => snavObs.observe(s));
+
+/* -------------------------------------------------------
+   SCROLL REVEAL
+------------------------------------------------------- */
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => revealObs.observe(el));
+
+/* -------------------------------------------------------
+   ANIMATED COUNTERS
+------------------------------------------------------- */
+const counterEls = document.querySelectorAll('.counter-block__num[data-target]');
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.counted) {
+      e.target.dataset.counted = true;
+      const target = +e.target.dataset.target;
+      const suffix = target === 100 ? '%' : '+';
+      const duration = 1800;
+      const step = Math.ceil(target / (duration / 16));
+      let count = 0;
+      const tick = () => {
+        count = Math.min(count + step, target);
+        e.target.textContent = count + suffix;
+        if (count < target) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+counterEls.forEach(el => counterObs.observe(el));
+
+/* -------------------------------------------------------
+   SERVICE DEPT TABS
+------------------------------------------------------- */
+const deptBtns  = document.querySelectorAll('.sdept-btn');
+const deptPanels = document.querySelectorAll('.service-dept');
+
+deptBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    deptBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+    deptPanels.forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    document.getElementById('dept-' + btn.dataset.dept).classList.add('active');
+  });
+});
+
+/* -------------------------------------------------------
+   GALLERY PAGINATION + LIGHTBOX
+------------------------------------------------------- */
+const galleryGrid  = document.getElementById('galleryGrid');
+const galleryItems = Array.from(galleryGrid.querySelectorAll('.gallery-item'));
+const galleryTabs  = document.querySelectorAll('.gallery-tab');
+const galleryPageBtns = document.querySelectorAll('.gallery-page-btn');
+
+let currentPage = 1;
+let lightboxImages = [];
+let lightboxIndex  = 0;
+
+function showGalleryPage(page) {
+  galleryGrid.classList.add('fading');
+  setTimeout(() => {
+    galleryItems.forEach(item => {
+      item.classList.toggle('hidden', !item.classList.contains('p' + page));
+    });
+    currentPage = page;
+    galleryTabs.forEach(t => t.classList.toggle('active', +t.dataset.page === page));
+    galleryPageBtns.forEach(b => b.classList.toggle('active', +b.dataset.page === page));
+    galleryGrid.classList.remove('fading');
+    // Rebuild lightbox array for this page
+    lightboxImages = galleryItems
+      .filter(i => i.classList.contains('p' + page))
+      .map(i => i.dataset.src);
+  }, 250);
+}
+
+galleryTabs.forEach(tab => tab.addEventListener('click', () => showGalleryPage(+tab.dataset.page)));
+galleryPageBtns.forEach(btn => btn.addEventListener('click', () => showGalleryPage(+btn.dataset.page)));
+
+// Init lightbox array
+lightboxImages = galleryItems.filter(i => i.classList.contains('p1')).map(i => i.dataset.src);
+
+// Open lightbox on item click
+galleryItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const src = item.dataset.src;
+    lightboxIndex = lightboxImages.indexOf(src);
+    openLightbox(src);
+  });
+});
+
+const lightbox = document.getElementById('lightbox');
+const lbImg    = document.getElementById('lbImg');
+const lbClose  = document.getElementById('lbClose');
+const lbPrev   = document.getElementById('lbPrev');
+const lbNext   = document.getElementById('lbNext');
+
+function openLightbox(src) {
+  lbImg.src = src;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lbNavigate(dir) {
+  lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+  lbImg.src = lightboxImages[lightboxIndex];
+}
+
+lbClose.addEventListener('click', closeLightbox);
+lbPrev.addEventListener('click', (e) => { e.stopPropagation(); lbNavigate(-1); });
+lbNext.addEventListener('click', (e) => { e.stopPropagation(); lbNavigate(1);  });
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+
+document.addEventListener('keydown', (e) => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape')      closeLightbox();
+  if (e.key === 'ArrowLeft')  lbNavigate(-1);
+  if (e.key === 'ArrowRight') lbNavigate(1);
+});
+
+/* -------------------------------------------------------
+   CONTACT FORM
+------------------------------------------------------- */
+const form       = document.getElementById('contactForm');
+const submitBtn  = document.getElementById('submitBtn');
+const formSuccess = document.getElementById('formSuccess');
+const requiredInputs = form.querySelectorAll('[required]');
+
+function checkForm() {
+  submitBtn.disabled = !Array.from(requiredInputs).every(i => i.value.trim() !== '');
+}
+
+requiredInputs.forEach(i => i.addEventListener('input', checkForm));
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  form.style.display = 'none';
+  formSuccess.classList.add('show');
+});
+
+document.getElementById('resetFormBtn').addEventListener('click', () => {
+  form.reset();
+  form.style.display = '';
+  formSuccess.classList.remove('show');
+  submitBtn.disabled = true;
+});
+</script>
+
+</body>
+</html>
